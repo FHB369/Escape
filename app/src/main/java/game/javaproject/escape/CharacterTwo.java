@@ -5,26 +5,21 @@ import android.graphics.BitmapFactory;
 import android.graphics.Point;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
-import java.util.Vector;
 
-public class Character {
+public class CharacterTwo {
+
     ArrayList<Bitmap> animChar, animCharFront,animCharBack, animCharUp, animCharDown,still,backStill,upStill,downStill,upFire, downFire, stillFire, backStillFire;
     Bitmap bitmap;
-    DrawingThread drawingThread;
+    DrawingThreadTwo drawingThread;
 
     public int centerX, centerY, idx;
 
-    Ground ground;
+    GroundTwo ground;
 
     Point topLeftPoint = new Point(0, 0);
 
 
-    public Character(DrawingThread drawingThread) {        this.drawingThread = drawingThread;
+    public CharacterTwo(DrawingThreadTwo drawingThread) {        this.drawingThread = drawingThread;
 
         animChar=new ArrayList<Bitmap>();
         animCharFront=new ArrayList<Bitmap>();
@@ -41,7 +36,7 @@ public class Character {
         downStill = new ArrayList<Bitmap>();
 
 
-        Bitmap tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player1);
+        Bitmap tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player1w);
         tempBitmap = Bitmap.createScaledBitmap(tempBitmap,133*drawingThread.displayY/540, 133*drawingThread.displayY/540, true);
         animCharFront.add(tempBitmap);
         still.add(tempBitmap);
@@ -51,24 +46,24 @@ public class Character {
         stillFire.add(tempBitmap);
         stillFire.add(tempBitmap);
 
-        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player1fire);
+        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player1firew);
         tempBitmap = Bitmap.createScaledBitmap(tempBitmap,133*drawingThread.displayY/540, 133*drawingThread.displayY/540, true);
         stillFire.add(tempBitmap);
         stillFire.add(tempBitmap);
 
-        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player2);
+        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player2w);
         tempBitmap = Bitmap.createScaledBitmap(tempBitmap,133*drawingThread.displayY/540, 133*drawingThread.displayY/540, true);
         animCharFront.add(tempBitmap);
 
-        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player3);
+        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player3w);
         tempBitmap = Bitmap.createScaledBitmap(tempBitmap,133*drawingThread.displayY/540, 133*drawingThread.displayY/540, true);
         animCharFront.add(tempBitmap);
 
-        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player4);
+        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player4w);
         tempBitmap = Bitmap.createScaledBitmap(tempBitmap,133*drawingThread.displayY/540, 133*drawingThread.displayY/540, true);
         animCharFront.add(tempBitmap);
 
-        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player11);
+        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player11w);
         tempBitmap = Bitmap.createScaledBitmap(tempBitmap,133*drawingThread.displayY/540, 133*drawingThread.displayY/540, true);
         animCharBack.add(tempBitmap);
         backStill.add(tempBitmap);
@@ -78,24 +73,24 @@ public class Character {
         backStillFire.add(tempBitmap);
         backStillFire.add(tempBitmap);
 
-        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player11fire);
+        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player11firew);
         tempBitmap = Bitmap.createScaledBitmap(tempBitmap,133*drawingThread.displayY/540, 133*drawingThread.displayY/540, true);
         backStillFire.add(tempBitmap);
         backStillFire.add(tempBitmap);
 
-        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player22);
+        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player22w);
         tempBitmap = Bitmap.createScaledBitmap(tempBitmap,133*drawingThread.displayY/540, 133*drawingThread.displayY/540, true);
         animCharBack.add(tempBitmap);
 
-        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player33);
+        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player33w);
         tempBitmap = Bitmap.createScaledBitmap(tempBitmap,133*drawingThread.displayY/540, 133*drawingThread.displayY/540, true);
         animCharBack.add(tempBitmap);
 
-        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player44);
+        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player44w);
         tempBitmap = Bitmap.createScaledBitmap(tempBitmap,133*drawingThread.displayY/540, 133*drawingThread.displayY/540, true);
         animCharBack.add(tempBitmap);
 
-        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player111);
+        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player111w);
         tempBitmap = Bitmap.createScaledBitmap(tempBitmap,133*drawingThread.displayY/540, 133*drawingThread.displayY/540, true);
         animCharUp.add(tempBitmap);
         upStill.add(tempBitmap);
@@ -105,24 +100,24 @@ public class Character {
         upFire.add(tempBitmap);
         upFire.add(tempBitmap);
 
-        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player111fire);
+        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player111firew);
         tempBitmap = Bitmap.createScaledBitmap(tempBitmap,133*drawingThread.displayY/540, 133*drawingThread.displayY/540, true);
         upFire.add(tempBitmap);
         upFire.add(tempBitmap);
 
-        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player222);
+        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player222w);
         tempBitmap = Bitmap.createScaledBitmap(tempBitmap,133*drawingThread.displayY/540, 133*drawingThread.displayY/540, true);
         animCharUp.add(tempBitmap);
 
-        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player333);
+        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player333w);
         tempBitmap = Bitmap.createScaledBitmap(tempBitmap,133*drawingThread.displayY/540, 133*drawingThread.displayY/540, true);
         animCharUp.add(tempBitmap);
 
-        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player444);
+        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player444w);
         tempBitmap = Bitmap.createScaledBitmap(tempBitmap,133*drawingThread.displayY/540, 133*drawingThread.displayY/540, true);
         animCharUp.add(tempBitmap);
 
-        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player1111);
+        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player1111w);
         tempBitmap = Bitmap.createScaledBitmap(tempBitmap,133*drawingThread.displayY/540, 133*drawingThread.displayY/540, true);
         animCharDown.add(tempBitmap);
         downStill.add(tempBitmap);
@@ -132,20 +127,20 @@ public class Character {
         downFire.add(tempBitmap);
         downFire.add(tempBitmap);
 
-        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player1111fire);
+        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player1111firew);
         tempBitmap = Bitmap.createScaledBitmap(tempBitmap,133*drawingThread.displayY/540, 133*drawingThread.displayY/540, true);
         downFire.add(tempBitmap);
         downFire.add(tempBitmap);
 
-        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player2222);
+        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player2222w);
         tempBitmap = Bitmap.createScaledBitmap(tempBitmap,133*drawingThread.displayY/540, 133*drawingThread.displayY/540, true);
         animCharDown.add(tempBitmap);
 
-        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player3333);
+        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player3333w);
         tempBitmap = Bitmap.createScaledBitmap(tempBitmap,133*drawingThread.displayY/540, 133*drawingThread.displayY/540, true);
         animCharDown.add(tempBitmap);
 
-        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player4444);
+        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.player4444w);
         tempBitmap = Bitmap.createScaledBitmap(tempBitmap,133*drawingThread.displayY/540, 133*drawingThread.displayY/540, true);
         animCharDown.add(tempBitmap);
 

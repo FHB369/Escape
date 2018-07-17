@@ -1,23 +1,19 @@
 package game.javaproject.escape;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
-import android.util.Log;
 import android.view.Display;
 import android.view.WindowManager;
 
 import java.util.ArrayList;
 
-public class DrawingThread extends Thread {
+public class DrawingThreadTwo extends Thread {
 
     private Canvas canvas;
-    StageOneView stageOneView;
+    StageTwoView stageTwoView;
     Context context;
     public static boolean pauseFlag = false;
 
@@ -25,13 +21,13 @@ public class DrawingThread extends Thread {
 
     public ArrayList<Point> swipe = new ArrayList<Point>();
 
-    Ground ground;
-    Ground cloud;
+    GroundTwo ground;
+    GroundTwo cloud;
 
     int displayX, displayY;
 
-    public DrawingThread(StageOneView stageOneView, Context context) {
-        this.stageOneView = stageOneView;
+    public DrawingThreadTwo(StageTwoView stageTwoView, Context context) {
+        this.stageTwoView = stageTwoView;
         this.context = context;
 
         initializeAll();
@@ -46,8 +42,8 @@ public class DrawingThread extends Thread {
         displayX = displayDimension.x;
         displayY = displayDimension.y;
 
-        ground = new Ground(this, R.drawable.stage1,4);
-        cloud = new Ground(this, R.drawable.cloud,2);
+        ground = new GroundTwo(this, R.drawable.stage2,4);
+        cloud = new GroundTwo(this, R.drawable.cloud,2);
 
 
     }
@@ -59,9 +55,9 @@ public class DrawingThread extends Thread {
         super.run();
         threadFlag = true;
         while(threadFlag){
-            canvas = stageOneView.surfaceHolder.lockCanvas();
+            canvas = stageTwoView.surfaceHolder.lockCanvas();
             try{
-                synchronized (stageOneView.surfaceHolder){
+                synchronized (stageTwoView.surfaceHolder){
                     updateDisplay();
                     //animate();
                 }
@@ -69,7 +65,7 @@ public class DrawingThread extends Thread {
 
             }finally {
                 if(canvas!=null){
-                    stageOneView.surfaceHolder.unlockCanvasAndPost(canvas);
+                    stageTwoView.surfaceHolder.unlockCanvasAndPost(canvas);
                 }
             }
 
@@ -98,6 +94,17 @@ public class DrawingThread extends Thread {
         if(ground.enemy9.fireCount<8)canvas.drawBitmap(ground.enemy9.animChar.get(idd), ground.enemy9.topLeftPoint.x, ground.enemy9.topLeftPoint.y, null);
         if(ground.enemy10.fireCount<8)canvas.drawBitmap(ground.enemy10.animChar.get(idd), ground.enemy10.topLeftPoint.x, ground.enemy10.topLeftPoint.y, null);
         if(ground.enemy11.fireCount<8)canvas.drawBitmap(ground.enemy11.animChar.get(idd), ground.enemy11.topLeftPoint.x, ground.enemy11.topLeftPoint.y, null);
+
+        if(ground.enemy1.fireCount<8 && ground.enemy3.fireCount<8)canvas.drawBitmap(ground.b1n2,ground.b12.x,ground.b12.y, null);
+        if(ground.enemy3.fireCount<8 && ground.enemy4.fireCount<8)canvas.drawBitmap(ground.b3n4,ground.b34.x,ground.b34.y, null);
+        if(ground.enemy4.fireCount<8 && ground.enemy5.fireCount<8)canvas.drawBitmap(ground.b4n5,ground.b45.x,ground.b45.y, null);
+        if(ground.enemy6.fireCount<8 && ground.enemy7.fireCount<8)canvas.drawBitmap(ground.b6n7,ground.b67.x,ground.b67.y, null);
+        if(ground.enemy8.fireCount<8 && ground.enemy9.fireCount<8)canvas.drawBitmap(ground.b8n9,ground.b89.x,ground.b89.y, null);
+        if(ground.enemy9.fireCount<8 && ground.enemy10.fireCount<8)canvas.drawBitmap(ground.b9n10,ground.b910.x,ground.b910.y, null);
+        if(ground.enemy3.fireCount<8 && ground.enemy6.fireCount<8)canvas.drawBitmap(ground.b3n6,ground.b36.x,ground.b36.y, null);
+        if(ground.enemy5.fireCount<8 && ground.enemy7.fireCount<8)canvas.drawBitmap(ground.b5n7,ground.b57.x,ground.b57.y, null);
+        if(ground.enemy6.fireCount<8 && ground.enemy8.fireCount<8)canvas.drawBitmap(ground.b6n8,ground.b68.x,ground.b68.y, null);
+        if(ground.enemy7.fireCount<8 && ground.enemy10.fireCount<8)canvas.drawBitmap(ground.b7n10,ground.b710.x,ground.b710.y, null);
 
         if(ground.weapon1.gained(new Point(ground.player.centerX, ground.player.centerY))){canvas.drawBitmap(ground.weapon1.animChar.get(ground.weapon1.idd), ground.weapon1.topLeftPoint.x, ground.weapon1.topLeftPoint.y, null);}
         if(ground.weapon2.gained(new Point(ground.player.centerX, ground.player.centerY))){canvas.drawBitmap(ground.weapon2.animChar.get(ground.weapon2.idd), ground.weapon2.topLeftPoint.x, ground.weapon2.topLeftPoint.y, null);}
@@ -133,4 +140,5 @@ public class DrawingThread extends Thread {
     public void stopThread(){
         threadFlag = false;
     }
+
 }

@@ -1,23 +1,17 @@
 package game.javaproject.escape;
 
-import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.graphics.Point;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public class Ground {
-
+public class GroundTwo {
     Bitmap groundBitmap, tBitmap;
     int groundWidth, groundHeight;
     int leftmostPoint, rightmostPoint;
     int val;
 
     Point topleftPoint = new Point(0,0);
-    DrawingThread drawingThread;
+    DrawingThreadTwo drawingThread;
 
     boolean movingLeft = false;
     boolean movingRight = false;
@@ -27,27 +21,30 @@ public class Ground {
     int start,finish;
     public static int ammo=1;
 
-    Character player;
-    EnemyStageOne enemy1;
-    EnemyStageOne enemy2;
-    EnemyStageOne enemy3;
-    EnemyStageOne enemy4;
-    EnemyStageOne enemy5;
-    EnemyStageOne enemy6;
-    EnemyStageOne enemy7;
-    EnemyStageOne enemy8;
-    EnemyStageOne enemy9;
-    EnemyStageOne enemy10;
-    EnemyStageOne enemy11;
+    CharacterTwo player;
+    EnemyStageTwo enemy1;
+    EnemyStageTwo enemy2;
+    EnemyStageTwo enemy3;
+    EnemyStageTwo enemy4;
+    EnemyStageTwo enemy5;
+    EnemyStageTwo enemy6;
+    EnemyStageTwo enemy7;
+    EnemyStageTwo enemy8;
+    EnemyStageTwo enemy9;
+    EnemyStageTwo enemy10;
+    EnemyStageTwo enemy11;
 
-    WeaponStageOne weapon1;
-    WeaponStageOne weapon2;
-    WeaponStageOne weapon3;
-    WeaponStageOne weapon4;
+    WeaponStageTwo weapon1;
+    WeaponStageTwo weapon2;
+    WeaponStageTwo weapon3;
+    WeaponStageTwo weapon4;
+
+    Bitmap b1n2, b3n4, b4n5, b6n7, b8n9, b9n10, b3n6, b5n7, b6n8, b7n10;
+    Point b12,b34,b45,b67,b89,b910,b36,b57,b68,b710;
 
 
 
-    public Ground(DrawingThread drawingThread, int bitmapID, int val) {
+    public GroundTwo(DrawingThreadTwo drawingThread, int bitmapID, int val) {
         this.drawingThread = drawingThread;
         this.val = val;
         Bitmap tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), bitmapID);
@@ -58,89 +55,141 @@ public class Ground {
         groundHeight = groundBitmap.getHeight();
         groundWidth = groundBitmap.getWidth();
 
-        player=new Character(drawingThread);
-        Point enemyOne = new Point(893*drawingThread.displayY/1080, 126*drawingThread.displayY/1080);
-        Point enemyTwo = new Point(1555*drawingThread.displayY/1080, 775*drawingThread.displayY/1080);
-        Point enemyThree = new Point(1880*drawingThread.displayY/1080, 562*drawingThread.displayY/1080);
-        Point enemyFour = new Point(2731*drawingThread.displayY/1080, 118*drawingThread.displayY/1080);
-        Point enemyFive = new Point(2845*drawingThread.displayY/1080, 562*drawingThread.displayY/1080);
-        Point enemySix = new Point(3151*drawingThread.displayY/1080, 309*drawingThread.displayY/1080);
-        Point enemySeven = new Point(3264*drawingThread.displayY/1080, 780*drawingThread.displayY/1080);
-        Point enemyEight = new Point(3717*drawingThread.displayY/1080, 423*drawingThread.displayY/1080);
-        Point enemyNine = new Point(4474*drawingThread.displayY/1080, 562*drawingThread.displayY/1080);
-        Point enemyTen = new Point(4752*drawingThread.displayY/1080, 363*drawingThread.displayY/1080);
-        Point enemyEleven = new Point(4980*drawingThread.displayY/1080, 793*drawingThread.displayY/1080);
+        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.between1and2);
+        tempBitmap = Bitmap.createScaledBitmap(tempBitmap, (drawingThread.displayY * 130)/1080, (drawingThread.displayY*429)/1080, true);
+        b1n2 = tempBitmap;
+        b12 = new Point((1613*drawingThread.displayY)/1080, (278*drawingThread.displayY)/1080);
+
+        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.between3and4);
+        tempBitmap = Bitmap.createScaledBitmap(tempBitmap, (drawingThread.displayY * 130)/1080, (drawingThread.displayY*429)/1080, true);
+        b3n4 = tempBitmap;
+        b34 = new Point((2561*drawingThread.displayY)/1080, (177*drawingThread.displayY)/1080);
+
+        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.between4and5);
+        tempBitmap = Bitmap.createScaledBitmap(tempBitmap, (drawingThread.displayY * 130)/1080, (drawingThread.displayY*429)/1080, true);
+        b4n5 = tempBitmap;
+        b45 = new Point((2565*drawingThread.displayY)/1080, (525*drawingThread.displayY)/1080);
+
+        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.between6and7);
+        tempBitmap = Bitmap.createScaledBitmap(tempBitmap, (drawingThread.displayY * 130)/1080, (drawingThread.displayY*429)/1080, true);
+        b6n7 = tempBitmap;
+        b67 = new Point((3056*drawingThread.displayY)/1080, (374*drawingThread.displayY)/1080);
+
+        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.between8and9);
+        tempBitmap = Bitmap.createScaledBitmap(tempBitmap, (drawingThread.displayY * 171)/1080, (drawingThread.displayY*361)/1080, true);
+        b8n9 = tempBitmap;
+        b89 = new Point((3574*drawingThread.displayY)/1080, (168*drawingThread.displayY)/1080);
+
+        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.between9and10);
+        tempBitmap = Bitmap.createScaledBitmap(tempBitmap, (drawingThread.displayY * 225)/1080, (drawingThread.displayY*340)/1080, true);
+        b9n10 = tempBitmap;
+        b910 = new Point((3546*drawingThread.displayY)/1080, (545*drawingThread.displayY)/1080);
+
+        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.between3and6);
+        tempBitmap = Bitmap.createScaledBitmap(tempBitmap, (drawingThread.displayY * 338)/1080, (drawingThread.displayY*227)/1080, true);
+        b3n6 = tempBitmap;
+        b36 = new Point((2684*drawingThread.displayY)/1080, (149*drawingThread.displayY)/1080);
+
+        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.between5and7);
+        tempBitmap = Bitmap.createScaledBitmap(tempBitmap, (drawingThread.displayY * 398)/1080, (drawingThread.displayY*250)/1080, true);
+        b5n7 = tempBitmap;
+        b57 = new Point((2654*drawingThread.displayY)/1080, (667*drawingThread.displayY)/1080);
+
+        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.between6and8);
+        tempBitmap = Bitmap.createScaledBitmap(tempBitmap, (drawingThread.displayY * 345)/1080, (drawingThread.displayY*199)/1080, true);
+        b6n8 = tempBitmap;
+        b68 = new Point((3168*drawingThread.displayY)/1080, (142*drawingThread.displayY)/1080);
+
+        tempBitmap = BitmapFactory.decodeResource(drawingThread.context.getResources(), R.drawable.between7and10);
+        tempBitmap = Bitmap.createScaledBitmap(tempBitmap, (drawingThread.displayY * 350)/1080, (drawingThread.displayY*204)/1080, true);
+        b7n10 = tempBitmap;
+        b710 = new Point((3168*drawingThread.displayY)/1080, (681*drawingThread.displayY)/1080);
+
+        player=new CharacterTwo(drawingThread);
+        Point enemyOne = new Point(1525*drawingThread.displayY/1080, 157*drawingThread.displayY/1080);
+        Point enemyTwo = new Point(1525*drawingThread.displayY/1080, 694*drawingThread.displayY/1080);
+        Point enemyThree = new Point(2459*drawingThread.displayY/1080, 74*drawingThread.displayY/1080);
+        Point enemyFour = new Point(2459*drawingThread.displayY/1080, 456*drawingThread.displayY/1080);
+        Point enemyFive = new Point(2459*drawingThread.displayY/1080, 778*drawingThread.displayY/1080);
+        Point enemySix = new Point(2952*drawingThread.displayY/1080, 241*drawingThread.displayY/1080);
+        Point enemySeven = new Point(2952*drawingThread.displayY/1080, 623*drawingThread.displayY/1080);
+        Point enemyEight = new Point(3436*drawingThread.displayY/1080, 74*drawingThread.displayY/1080);
+        Point enemyNine = new Point(3587*drawingThread.displayY/1080, 462*drawingThread.displayY/1080);
+        Point enemyTen = new Point(3436*drawingThread.displayY/1080, 778*drawingThread.displayY/1080);
+        Point enemyEleven = new Point(4368*drawingThread.displayY/1080, 456*drawingThread.displayY/1080);
 
         Point weaponOne = new Point(1163*drawingThread.displayY/1080, 631*drawingThread.displayY/1080);
         Point weaponTwo = new Point(1723*drawingThread.displayY/1080, 187*drawingThread.displayY/1080);
         Point weaponThree = new Point(2171*drawingThread.displayY/1080, 507*drawingThread.displayY/1080);
         Point weaponFour = new Point(3371*drawingThread.displayY/1080, 623*drawingThread.displayY/1080);
 
-        enemy1=new EnemyStageOne(drawingThread, enemyOne);
-        enemy2=new EnemyStageOne(drawingThread, enemyTwo);
-        enemy3=new EnemyStageOne(drawingThread, enemyThree);
-        enemy4=new EnemyStageOne(drawingThread, enemyFour);
-        enemy5=new EnemyStageOne(drawingThread, enemyFive);
-        enemy6=new EnemyStageOne(drawingThread, enemySix);
-        enemy7=new EnemyStageOne(drawingThread, enemySeven);
-        enemy8=new EnemyStageOne(drawingThread, enemyEight);
-        enemy9=new EnemyStageOne(drawingThread, enemyNine);
-        enemy10=new EnemyStageOne(drawingThread, enemyTen);
-        enemy11=new EnemyStageOne(drawingThread, enemyEleven);
+        enemy1=new EnemyStageTwo(drawingThread, enemyOne);
+        enemy2=new EnemyStageTwo(drawingThread, enemyTwo);
+        enemy3=new EnemyStageTwo(drawingThread, enemyThree);
+        enemy4=new EnemyStageTwo(drawingThread, enemyFour);
+        enemy5=new EnemyStageTwo(drawingThread, enemyFive);
+        enemy6=new EnemyStageTwo(drawingThread, enemySix);
+        enemy7=new EnemyStageTwo(drawingThread, enemySeven);
+        enemy8=new EnemyStageTwo(drawingThread, enemyEight);
+        enemy9=new EnemyStageTwo(drawingThread, enemyNine);
+        enemy10=new EnemyStageTwo(drawingThread, enemyTen);
+        enemy11=new EnemyStageTwo(drawingThread, enemyEleven);
 
-        weapon1=new WeaponStageOne(drawingThread, weaponOne);
-        weapon2=new WeaponStageOne(drawingThread, weaponTwo);
-        weapon3=new WeaponStageOne(drawingThread, weaponThree);
-        weapon4=new WeaponStageOne(drawingThread, weaponFour);
+        weapon1=new WeaponStageTwo(drawingThread, weaponOne);
+        weapon2=new WeaponStageTwo(drawingThread, weaponTwo);
+        weapon3=new WeaponStageTwo(drawingThread, weaponThree);
+        weapon4=new WeaponStageTwo(drawingThread, weaponFour);
 
     }
 
     public void fire(Point p){
 
-        if(p.x>=(532*drawingThread.displayY)/1080 && p.x<=(918*drawingThread.displayY)/1080  &&  p.y>=(193*drawingThread.displayY)/1080 && p.y<=(279*drawingThread.displayY)/1080){
+        if(p.x>=(1189*drawingThread.displayY)/1080 && p.x<=(1578*drawingThread.displayY)/1080  &&  p.y>=(150*drawingThread.displayY)/1080 && p.y<=(306*drawingThread.displayY)/1080){
             enemy1.fireCount+=1;
             enemy1.isDead();
-        }else if(p.x>=(918*drawingThread.displayY)/1080 && p.x<=(1591*drawingThread.displayY)/1080  &&  p.y>=(809*drawingThread.displayY)/1080 && p.y<=(918*drawingThread.displayY)/1080){
+        }else if(p.x>=(1189*drawingThread.displayY)/1080 && p.x<=(1578*drawingThread.displayY)/1080  &&  p.y>=(694*drawingThread.displayY)/1080 && p.y<=(850*drawingThread.displayY)/1080){
             enemy2.fireCount+=1;
             enemy2.isDead();
-        }else if(p.x>=(1255*drawingThread.displayY)/1080 && p.x<=(1961*drawingThread.displayY)/1080  &&  p.y>=(608*drawingThread.displayY)/1080 && p.y<=(717*drawingThread.displayY)/1080){
+        }else if(p.x>=(2119*drawingThread.displayY)/1080 && p.x<=(2508*drawingThread.displayY)/1080  &&  p.y>=(67*drawingThread.displayY)/1080 && p.y<=(223*drawingThread.displayY)/1080){
             enemy3.fireCount+=1;
             enemy3.isDead();
-        }else if(p.x>=(2105*drawingThread.displayY)/1080 && p.x<=(2766*drawingThread.displayY)/1080  &&  p.y>=(170*drawingThread.displayY)/1080 && p.y<=(279*drawingThread.displayY)/1080){
+        }else if(p.x>=(2119*drawingThread.displayY)/1080 && p.x<=(2508*drawingThread.displayY)/1080  &&  p.y>=(462*drawingThread.displayY)/1080 && p.y<=(618*drawingThread.displayY)/1080){
             enemy4.fireCount+=1;
             enemy4.isDead();
-        }else if(p.x>=(2143*drawingThread.displayY)/1080 && p.x<=(2880*drawingThread.displayY)/1080  &&  p.y>=(608*drawingThread.displayY)/1080 && p.y<=(717*drawingThread.displayY)/1080){
+        }else if(p.x>=(2119*drawingThread.displayY)/1080 && p.x<=(2508*drawingThread.displayY)/1080  &&  p.y>=(789*drawingThread.displayY)/1080 && p.y<=(945*drawingThread.displayY)/1080){
             enemy5.fireCount+=1;
             enemy5.isDead();
-        }else if(p.x>=(2624*drawingThread.displayY)/1080 && p.x<=(3185*drawingThread.displayY)/1080  &&  p.y>=(352*drawingThread.displayY)/1080 && p.y<=(447*drawingThread.displayY)/1080){
+        }else if(p.x>=(2642*drawingThread.displayY)/1080 && p.x<=(3031*drawingThread.displayY)/1080  &&  p.y>=(246*drawingThread.displayY)/1080 && p.y<=(402*drawingThread.displayY)/1080){
             enemy6.fireCount+=1;
             enemy6.isDead();
-        }else if(p.x>=(2436*drawingThread.displayY)/1080 && p.x<=(3300*drawingThread.displayY)/1080  &&  p.y>=(809*drawingThread.displayY)/1080 && p.y<=(938*drawingThread.displayY)/1080){
+        }else if(p.x>=(2636*drawingThread.displayY)/1080 && p.x<=(3025*drawingThread.displayY)/1080  &&  p.y>=(636*drawingThread.displayY)/1080 && p.y<=(792*drawingThread.displayY)/1080){
             enemy7.fireCount+=1;
             enemy7.isDead();
-        }else if(p.x>=(4204*drawingThread.displayY)/1080 && p.x<=(5032*drawingThread.displayY)/1080  &&  p.y>=(809*drawingThread.displayY)/1080 && p.y<=(938*drawingThread.displayY)/1080){
+        }else if(p.x>=(4110*drawingThread.displayY)/1080 && p.x<=(4499*drawingThread.displayY)/1080  &&  p.y>=(463*drawingThread.displayY)/1080 && p.y<=(715*drawingThread.displayY)/1080){
             enemy11.fireCount+=1;
             enemy11.isDead();
-        }else if(p.x>=(4337*drawingThread.displayY)/1080 && p.x<=(4752*drawingThread.displayY)/1080  &&  p.y>=(347*drawingThread.displayY)/1080 && p.y<=(463*drawingThread.displayY)/1080){
+        }else if(p.x>=(3102*drawingThread.displayY)/1080 && p.x<=(3491*drawingThread.displayY)/1080  &&  p.y>=(784*drawingThread.displayY)/1080 && p.y<=(940*drawingThread.displayY)/1080){
             enemy10.fireCount+=1;
             enemy10.isDead();
         }
-    }
-
-    public void fireUp(Point p){
-        if(p.x>=(3842*drawingThread.displayY)/1080 && p.x<=(3992*drawingThread.displayY)/1080  &&  p.y>=(562*drawingThread.displayY)/1080 && p.y<=(717*drawingThread.displayY)/1080){
+        if(p.x>=(3119*drawingThread.displayY)/1080 && p.x<=(3508*drawingThread.displayY)/1080  &&  p.y>=(72*drawingThread.displayY)/1080 && p.y<=(228*drawingThread.displayY)/1080){
             enemy8.fireCount+=3;
 
             enemy8.isDead();
         }
-    }
-
-    public void fireDown(Point p){
-        if(p.x>=(4506*drawingThread.displayY)/1080 && p.x<=(4740*drawingThread.displayY)/1080  &&  p.y>=(363*drawingThread.displayY)/1080 && p.y<=(615*drawingThread.displayY)/1080){
+        if(p.x>=(3269*drawingThread.displayY)/1080 && p.x<=(3658*drawingThread.displayY)/1080  &&  p.y>=(462*drawingThread.displayY)/1080 && p.y<=(618*drawingThread.displayY)/1080){
             enemy9.fireCount+=3;
 
             enemy9.isDead();
         }
+    }
+
+    public void fireUp(Point p){
+
+    }
+
+    public void fireDown(Point p){
+
     }
 
 
@@ -211,6 +260,17 @@ public class Ground {
             weapon2.updatetop();
             weapon3.updatetop();
             weapon4.updatetop();
+
+            b12.x-=val;
+            b34.x-=val;
+            b45.x-=val;
+            b67.x-=val;
+            b89.x-=val;
+            b910.x-=val;
+            b36.x-=val;
+            b57.x-=val;
+            b68.x-=val;
+            b710.x-=val;
         }
     }
 
@@ -253,6 +313,17 @@ public class Ground {
             weapon2.updatetop();
             weapon3.updatetop();
             weapon4.updatetop();
+
+            b12.x+=val;
+            b34.x+=val;
+            b45.x+=val;
+            b67.x+=val;
+            b89.x+=val;
+            b910.x+=val;
+            b36.x+=val;
+            b57.x+=val;
+            b68.x+=val;
+            b710.x+=val;
         }
     }
 
@@ -439,41 +510,20 @@ public class Ground {
 
 
 
-        if(x>=1090 && x<=1730 && y>=130 && y<=210)return false;
-        else if(x>=810 && x<=1660 && y>=280 && y<=360)return false;
-        else if(x>=3650 && x<=3940 && y>=400 && y<=480)return false;
-        else if(x>=3420 && x<=3870 && y>=520 && y<=600)return false;
-        else if(x>=3420 && x<=3520 && y>=300 && y<=520)return false;
-        else if(x>=3050 && x<=3250 && y>=420 && y<=704)return false;
-        else if(x>=1880 && x<=2620 && y>=280 && y<=480)return false;
-        else if(x>=1500 && x<=3150 && y>=420 && y<=500)return false;
-        else if(x>=1470 && x<=2114 && y>=420 && y<=620)return false;
-        else if(x>=2302 && x<=2918 && y>=420 && y<=620)return false;
-        else if(x>=1650 && x<=1900 && y>=270 && y<=320)return false;
-        else if(x>=1800 && x<=1960 && y>=320 && y<=360)return false;
-        else if(x>=710 && x<=910 && y>=420 && y<=520)return false;
-        else if(x>=670 && x<=850 && y>=490 && y<=610)return false;
-        else if(x>=640 && x<=820 && y>=560 && y<=690)return false;
-        else if(x>=570 && x<=770 && y>=680 && y<=810)return false;
-        else if(x>=1020 && x<=1390 && y>=420 && y<=610)return false;
-        else if(x>=960 && x<=1190 && y>=590 && y<=720)return false;
-        else if(x>=3940 && x<=4560 && y>=400 && y<=700)return false;
-        else if(x>=460 && x<=1040 && y<=210 )return false;
-        else if(x>=1040 && x<=1800 && y<=90 )return false;
-        else if(x>=1800 && x<=5140 && y<=210 )return false;
-        else if(x>=900 && y>=700 && y<=800 )return false;
-        else if(x>=2800 && y>=270 && y<=360 )return false;
-        else if(x>=5140 &&  y<=800 )return false;
-        else if(x<=460 )return false;
-        else if(y>=890 )return false;
-        else if(x>=5480 )return false;
-
-
+        if(y<=35 || y>=1241) return false;
+        else if(x<=78 || x>=5724) return false;
+        else if(x>=0 && y>=0 && x<=702 && y<=192) return false;
+        else if(x>=0 && y>=0 && x<=549 && y<=324) return false;
+        else if(x>=0 && y>=0 && x<=316 && y<=493) return false;
+        else if(x>=0 && y>=456 && x<=435 && y<=778) return false;
+        else if(x>=1230 && y>=0 && x<=2082 && y<=143) return false;
+        else if(x>=1187 && y>=875 && x<=2039 && y<=1080) return false;
+        else if(x>=930 && y>=919 && x<=2296 && y<=1080) return false;
+        else if(x>=4154 && y>=0 && x<=5760 && y<=192) return false;
+        else if(x>=4368 && y>=0 && x<=5760 && y<=304) return false;
+        else if(x>=4625 && y>=0 && x<=5760 && y<=366) return false;
         else {
             return true;
         }
     }
-
-
-
 }

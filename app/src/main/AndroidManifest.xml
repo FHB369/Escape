@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="game.javaproject.escape">
 
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,14 +11,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StageOne"></activity>
+        <activity
+            android:name=".StageOne"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".FirstSuccess"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".StageTwo"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".SecondSuccess"
+            android:screenOrientation="landscape" />
+        <activity android:name=".ZeroSuccess"
+            android:screenOrientation="landscape"></activity>
     </application>
 
 </manifest>

@@ -10,19 +10,16 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
-
-public class StageOneView extends SurfaceView implements SurfaceHolder.Callback{
+public class StageTwoView extends SurfaceView implements SurfaceHolder.Callback{
 
     Context context;
-    DrawingThread drawingThread;
+    DrawingThreadTwo drawingThread;
     SurfaceHolder surfaceHolder;
     public Point touchPoint;
 
 
-    public StageOneView(Context context) {
+    public StageTwoView(Context context) {
         super(context);
         this.context=context;
 
@@ -30,11 +27,11 @@ public class StageOneView extends SurfaceView implements SurfaceHolder.Callback{
 
         surfaceHolder = getHolder();
         surfaceHolder.addCallback(this);
-        drawingThread  = new DrawingThread(this, context);
+        drawingThread  = new DrawingThreadTwo(this, context);
         touchPoint=new Point();
     }
 
-    public StageOneView(Context context, AttributeSet attrs) {
+    public StageTwoView(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context=context;
 
@@ -42,12 +39,12 @@ public class StageOneView extends SurfaceView implements SurfaceHolder.Callback{
 
         surfaceHolder = getHolder();
         surfaceHolder.addCallback(this);
-        drawingThread  = new DrawingThread(this, context);
+        drawingThread  = new DrawingThreadTwo(this, context);
         touchPoint=new Point();
 
     }
 
-    public StageOneView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public StageTwoView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.context=context;
 
@@ -55,19 +52,19 @@ public class StageOneView extends SurfaceView implements SurfaceHolder.Callback{
 
         surfaceHolder = getHolder();
         surfaceHolder.addCallback(this);
-        drawingThread  = new DrawingThread(this, context);
+        drawingThread  = new DrawingThreadTwo(this, context);
         touchPoint=new Point();
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public StageOneView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public StageTwoView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         this.context=context;
 
         surfaceHolder = getHolder();
         surfaceHolder.addCallback(this);
-        drawingThread  = new DrawingThread(this, context);
+        drawingThread  = new DrawingThreadTwo(this, context);
         touchPoint=new Point();
     }
 
@@ -87,7 +84,7 @@ public class StageOneView extends SurfaceView implements SurfaceHolder.Callback{
     public void restartThread() {
         drawingThread.stopThread();
         drawingThread = null;
-        drawingThread = new DrawingThread(this, context);
+        drawingThread = new DrawingThreadTwo(this, context);
         drawingThread.start();
     }
 

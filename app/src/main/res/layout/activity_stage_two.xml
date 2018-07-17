@@ -9,12 +9,12 @@
     tools:context=".StageOne"
     tools:ignore="InvalidId">
 
-    <game.javaproject.escape.StageOneView
-        android:id="@+id/stageOneView"
+    <game.javaproject.escape.StageTwoView
+        android:id="@+id/stageTwoView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </game.javaproject.escape.StageOneView>
+    </game.javaproject.escape.StageTwoView>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -35,8 +35,8 @@
         android:padding="25dp">
 
         <Button
-            android:id="@+id/ex_button"
-            android:layout_width="151dp"
+            android:id="@+id/e_button"
+            android:layout_width="153dp"
             android:layout_height="40dp"
             android:layout_alignTop="@+id/fire_button"
             android:layout_centerHorizontal="true"
